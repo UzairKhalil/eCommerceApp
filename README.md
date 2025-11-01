@@ -1,59 +1,294 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# eCommerce Laravel Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A complete e-commerce web application built with Laravel 12 and Tailwind CSS v4. This application provides a full sales and purchase system for multiple products with variations, supporting both retail and wholesale pricing, with a comprehensive admin panel.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Public Features
+- ✅ **Product Catalog**: Browse products by category with search functionality
+- ✅ **Product Details**: View detailed product information with variations
+- ✅ **Shopping Cart**: Add, update, and remove items from cart
+- ✅ **Checkout**: Complete order placement with shipping information
+- ✅ **Order Management**: View order history and track order status
+- ✅ **User Authentication**: Registration and login system
+- ✅ **Responsive Design**: Mobile-friendly interface with Tailwind CSS
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Admin Features
+- ✅ **Dashboard**: Statistics and recent orders overview
+- ✅ **Product Management**: Full CRUD for products and variations
+- ✅ **Category Management**: Create and manage product categories
+- ✅ **Order Management**: View and update order status
+- ✅ **Price Management**: Separate retail and wholesale pricing
+- ✅ **Stock Management**: Track inventory levels
+- ✅ **User Management**: Admin and regular user roles
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Key Technical Features
+- ✅ **Product Variations**: Size, color, and custom attributes
+- ✅ **Dual Pricing**: Retail and wholesale support
+- ✅ **Session-based Cart**: No login required for browsing
+- ✅ **Order Processing**: Complete order workflow
+- ✅ **Authorization**: Admin-only access to management panel
+- ✅ **Database Seeding**: Sample data included
 
-## Learning Laravel
+## Technology Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- **Backend**: Laravel 12
+- **Frontend**: Tailwind CSS v4, Blade Templates
+- **Database**: MySQL/SQLite (configurable)
+- **Authentication**: Laravel Breeze (built-in)
+- **Build Tool**: Vite
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation
 
-## Laravel Sponsors
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js and NPM
+- MySQL or SQLite
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Setup Instructions
 
-### Premium Partners
+1. **Clone the repository**
+   ```bash
+   cd eCommerceApp
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
+
+3. **Install Node dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Configure environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+5. **Configure database** (Edit `.env` file)
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=your_database_name
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
+
+6. **Run migrations and seed database**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+7. **Build frontend assets**
+   ```bash
+   npm run dev
+   # Or for production: npm run build
+   ```
+
+8. **Start development server**
+   ```bash
+   php artisan serve
+   ```
+
+9. **Access the application**
+   - Public site: http://localhost:8000
+   - Admin panel: http://localhost:8000/login
+
+## Default Credentials
+
+### Admin Account
+- **Email**: admin@example.com
+- **Password**: password
+
+### Regular User
+- **Email**: user@example.com
+- **Password**: password
+
+## Database Structure
+
+### Tables
+- `users` - User accounts (admin/customer)
+- `categories` - Product categories
+- `products` - Product information
+- `product_variations` - Product variations (size, color, etc.)
+- `orders` - Order details
+- `order_items` - Individual order line items
+
+### Relationships
+- Categories → Products (1:N)
+- Products → Variations (1:N)
+- Users → Orders (1:N)
+- Orders → Order Items (1:N)
+- Products → Order Items (1:N)
+
+## Usage Guide
+
+### For Customers
+
+1. **Browse Products**: Visit the homepage and browse featured products
+2. **Search**: Use the search bar to find specific products
+3. **View Details**: Click on any product to see details and variations
+4. **Add to Cart**: Select variations and quantity, then add to cart
+5. **Checkout**: Review cart and proceed to checkout
+6. **Place Order**: Fill shipping information and place order
+7. **Track Orders**: View order history and status
+
+### For Administrators
+
+1. **Login**: Use admin credentials to access admin panel
+2. **Dashboard**: View sales statistics and recent orders
+3. **Manage Products**: Create, edit, and delete products
+4. **Manage Categories**: Organize products into categories
+5. **Manage Orders**: Update order status and track shipments
+6. **Set Prices**: Configure retail and wholesale pricing
+
+## Project Structure
+
+```
+app/
+├── Http/Controllers/
+│   ├── HomeController.php
+│   ├── ProductController.php
+│   ├── CartController.php
+│   ├── OrderController.php
+│   ├── Auth/
+│   │   ├── LoginController.php
+│   │   └── RegisterController.php
+│   └── Admin/
+│       ├── AdminController.php
+│       ├── CategoryController.php
+│       ├── AdminProductController.php
+│       └── AdminOrderController.php
+├── Models/
+│   ├── User.php
+│   ├── Category.php
+│   ├── Product.php
+│   ├── ProductVariation.php
+│   ├── Order.php
+│   └── OrderItem.php
+
+resources/
+├── views/
+│   ├── layouts/
+│   │   ├── app.blade.php
+│   │   └── admin.blade.php
+│   ├── home.blade.php
+│   ├── products/
+│   │   ├── index.blade.php
+│   │   └── show.blade.php
+│   ├── cart/index.blade.php
+│   ├── checkout.blade.php
+│   ├── orders/
+│   │   ├── index.blade.php
+│   │   └── show.blade.php
+│   ├── auth/
+│   │   ├── login.blade.php
+│   │   └── register.blade.php
+│   └── admin/
+│       ├── dashboard.blade.php
+│       ├── categories/
+│       │   ├── index.blade.php
+│       │   ├── create.blade.php
+│       │   └── edit.blade.php
+│       ├── products/
+│       │   ├── index.blade.php
+│       │   ├── create.blade.php
+│       │   └── edit.blade.php
+│       └── orders/
+│           ├── index.blade.php
+│           └── show.blade.php
+
+routes/
+└── web.php
+```
+
+## Key Features Explained
+
+### Product Variations
+Products can have multiple variations (e.g., Size: Small/Medium/Large, Color: Red/Blue/Green). Each variation has its own SKU, pricing, and stock level.
+
+### Dual Pricing
+- **Retail Price**: Standard customer price
+- **Wholesale Price**: Discounted price for bulk purchases
+- Orders can be placed in either retail or wholesale mode
+
+### Shopping Cart
+- Session-based cart (works without login)
+- Items persist across page visits
+- Quantity updates and removals
+- Automatic price calculations
+
+### Order Management
+- Order number generation
+- Status tracking (Pending → Processing → Shipped → Delivered)
+- Shipping information capture
+- Payment method selection
+- Order summary and history
+
+### Admin Panel
+- Protected routes with middleware
+- Dashboard with statistics
+- Full CRUD for products and categories
+- Order status management
+- Clean, professional interface
+
+## Development
+
+### Running Tests
+```bash
+php artisan test
+```
+
+### Code Style
+```bash
+php artisan pint
+```
+
+### Database Commands
+```bash
+# Reset database
+php artisan migrate:fresh --seed
+
+# Rollback migrations
+php artisan migrate:rollback
+
+# View routes
+php artisan route:list
+```
+
+## Customization
+
+### Adding New Product Attributes
+Edit the `products` migration to add new columns, then update the Product model's `$fillable` array.
+
+### Modifying Cart Behavior
+The cart is managed in `CartController.php` using Laravel sessions. Modify the session keys or structure as needed.
+
+### Changing Order Workflow
+Order processing logic is in `OrderController.php`. Update the `store()` method to modify order creation logic.
+
+### Admin Authorization
+Admin check is done via the `is_admin` field on users. Middleware can be added for additional security.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Feel free to submit issues and enhancement requests!
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Support
+
+For issues or questions, please check:
+- `QUICKSTART.md` - Quick start guide
+- `VIEWS_GUIDE.md` - Views documentation
+
+## Credits
+
+Built with [Laravel](https://laravel.com) and [Tailwind CSS](https://tailwindcss.com).
